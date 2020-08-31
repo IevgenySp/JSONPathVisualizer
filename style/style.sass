@@ -1,0 +1,84 @@
+body
+  margin: 0
+  height: 100%
+  font-family: roboto condensed,sans-serif
+
+  .main
+    display: block
+    height: 100vh
+    .main-label
+      color: #607D8B
+      font-size: 22px
+      font-weight: bold
+      margin: 10px
+      display: flex
+      justify-content: center
+
+    // Input component
+
+    [type="file"]
+      height: 0
+      overflow: hidden
+      width: 0
+
+    [type="file"] + label
+      margin-left: 20px
+      background: #f15d22
+      border: none
+      border-radius: 5px
+      color: #fff
+      cursor: pointer
+      display: inline-block
+      font-family: 'Rubik', sans-serif
+      font-size: inherit
+      font-weight: 500
+      margin-bottom: 1rem
+      outline: none
+      padding: 1rem 50px
+      position: relative
+      transition: all 0.3s
+      vertical-align: middle
+      &:hover
+        background-color: darken(#f15d22, 10%)
+      &.btn-1
+        background-color: #f79159
+        box-shadow: 0 6px darken(#f79159, 10%)
+        transition: none
+        &:hover
+          box-shadow: 0 4px darken(#f79159, 10%)
+          top: 2px
+
+    // Filter component
+    .uploader-filter
+      display: flex
+      flex-grow: 1
+      margin-top: 20px
+      margin-right: 20px
+      .filter
+        flex-grow: 1
+        margin-right: -10px
+        input
+          border: 1px solid #607D8B
+          border-radius: 5px
+          height: 46px
+          flex-grow: 1
+          margin-left: 10px
+          margin-right: 10px
+          padding-left: 10px
+          font-family: 'Rubik', sans-serif
+          font-size: inherit
+          font-weight: 500
+          color: #607D8B
+          width: 100%
+
+    // Viewer component
+    .viewer
+      display: flex
+      border: 1px solid #607D8B
+      border-radius: 5px
+      margin-left: 20px
+      margin-right: 20px
+      min-height: 82vh
+      padding: 10px
+      ul.MuiTreeView-root
+        height: 100%

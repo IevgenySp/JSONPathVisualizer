@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    height: 100%;
+    background: #0a1a1f;
+}
+
+.main {
+    background: #0a1a1f;
+    display: block;
+    height: 100vh;
+}

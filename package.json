@@ -11,7 +11,8 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
     "build": "webpack --env.NODE_ENV=dev",
@@ -54,7 +55,6 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.2",
-    "webpack-dev-server": "^3.10.3",
     "webpack-obfuscator": "^0.28.0",
     "xml-loader": "^1.2.1"
   },

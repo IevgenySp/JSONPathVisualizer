@@ -14,7 +14,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "build": "webpack --env.NODE_ENV=dev --watch",
+    "build": "webpack --env.NODE_ENV=dev",
+    "build-dev": "webpack --env.NODE_ENV=dev --watch",
     "dist": "webpack --env.NODE_ENV=prod",
     "start": "webpack-dev-server --open",
     "server": "node server.js"

@@ -54,8 +54,8 @@
     "build": "webpack --env.NODE_ENV=dev",
     "build-dev": "webpack --env.NODE_ENV=dev --watch",
     "dist": "webpack --env.NODE_ENV=prod",
-    "start": "webpack-dev-server --open",
-    "server": "node server.js"
+    "server": "webpack-dev-server --open",
+    "start": "node server.js"
   },
   "devDependencies": {
   },

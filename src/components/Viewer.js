@@ -7,6 +7,10 @@ import TreeItem from '@material-ui/lab/TreeItem';
 import Collapse from '@material-ui/core/Collapse';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-json";
+import "ace-builds/src-noconflict/theme-github";
 
 /**
  * SVG - element React hook
@@ -139,12 +143,17 @@ function CustomizedTreeView(data) {
         return menuItem;
     };
 
+    const onNodeToggle = (event, currentNode) => {
+        //console.log('onNodeToggle::', currentNode)
+    };
+
     return (
         <TreeView
             className={classes.root}
-            defaultExpanded={['1']}
+            defaultExpanded={['1', '2', '3']}
             defaultCollapseIcon={<MinusSquare />}
             defaultExpandIcon={<PlusSquare />}
+            onNodeToggle={onNodeToggle}
         >
             {data.data === null ? null : renderMenu(data.data)}
         </TreeView>
@@ -156,6 +165,7 @@ class Viewer extends Component {
         super(props);
         this.state = {
             showComponent: false,
+            listMode: true,
             expandedElements: ['1']
         };
     }
@@ -172,7 +182,14 @@ class Viewer extends Component {
         return this.state.showComponent !== nextState.showComponent ||
             this.props.data !== nextProps.data ||
             this.props.filteredData !== nextProps.filteredData ||
-            this.state.expandedElements !== nextState.expandedElements;
+            this.state.expandedElements !== nextState.expandedElements ||
+            this.state.listMode !== nextState.listMode;
+    }
+
+    onModeChange() {
+        this.setState({
+            listMode: !this.state.listMode,
+        })
     }
 
     render() {
@@ -185,9 +202,27 @@ class Viewer extends Component {
             maxWidth: 400,
         };
 
+        let viewer = this.state.listMode ?
+            <CustomizedTreeView data={this.props.data} filteredData={this.props.filteredData}/> :
+            <div style={{width: '100%', height: 'auto', display: 'flex'}}> <AceEditor
+                mode="json" theme="github" name="JSONViewer"
+                value={JSON.stringify(this.props.data, null, 2)}
+                style={{width: '100%', height: '100%'}}
+                readOnly={true}
+            />
+                <AceEditor
+                    mode="json" theme="github" name="JSONViewer"
+                    value={JSON.stringify(this.props.filteredData, null, 2)}
+                    style={{width: '100%', height: '100%'}}
+                    readOnly={true}
+                /></div>;
+
         return (
             <div className="viewer" style={style}>
-                <CustomizedTreeView data={this.props.data} filteredData={this.props.filteredData}/>
+                {viewer}
+                <Button variant="contained" color="primary" onClick={() => {this.onModeChange()}} style={{height: '35px', position: 'absolute', right: '40px'}}>
+                    Switch Mode
+                </Button>
             </div>
         )
     }
